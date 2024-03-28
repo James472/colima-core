@@ -18,7 +18,7 @@ download() (
     curl -LO $URL
     mv disk.raw "${FILE}.img"
 
-    shasum -a 512 "${FILE}" >"${FILE}.sha512sum"
+    shasum -a 512 "${FILE}.img" >"${FILE}.sha512sum"
 )
 
 # download
