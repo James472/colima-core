@@ -13,8 +13,8 @@ mkdir -p $DIST_DIR
 cd $DIST_DIR
 
 download() (
-    FILE="ubuntu-${UBUNTU_VERSION}-minimal-cloudimg-${1}.img"
-    URL="https://cloud-images.ubuntu.com/minimal/releases/${UBUNTU_CODENAME}/release/${FILE}"
+    FILE="ubuntu-${UBUNTU_VERSION}-server-cloudimg-${1}.img"
+    URL="https://cloud-images.ubuntu.com/releases/${UBUNTU_CODENAME}/release/${FILE}"
     curl -LO $URL
 
     shasum -a 512 "${FILE}" >"${FILE}.sha512sum"
@@ -25,7 +25,7 @@ download $ARCH
 
 # validate
 (
-    curl -sL https://cloud-images.ubuntu.com/minimal/releases/${UBUNTU_CODENAME}/release/SHA256SUMS | grep "${ARCH}\.img$" | shasum -a 256 --check --status
+    curl -sL https://cloud-images.ubuntu.com/releases/${UBUNTU_CODENAME}/release/SHA256SUMS | grep "${ARCH}\.img$" | shasum -a 256 --check --status
 )
 
 echo download successful
