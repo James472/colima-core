@@ -8,7 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 # external variables that must be set
 echo vars: $ARCH $BINFMT_ARCH $UBUNTU_VERSION $DOCKER_VERSION
 
-FILENAME="ubuntu-${UBUNTU_VERSION}-minimal-cloudimg-${ARCH}"
+FILENAME="ubuntu-${UBUNTU_VERSION}-server-cloudimg-${ARCH}"
 
 SCRIPT_DIR=$(realpath "$(dirname "$(dirname $0)")")
 IMG_DIR="$SCRIPT_DIR/dist/img"
@@ -63,7 +63,7 @@ install_packages() (
     chroot_exec apt-get install -y cloud-init lsb-release python3-apt gnupg curl wget
 
     chroot_exec apt-get purge -y apport console-setup-linux dbus-user-session dmsetup liblocale-gettext-perl lxd-agent-loader lxd-installer parted pciutils pollinate python3-gi snapd ssh-import-id
-    chroot_exec apt-get purge -y ubuntu-advantage-tools ubuntu-cloud-minimal ubuntu-drivers-common ubuntu-release-upgrader-core unattended-upgrades xz-utils
+    chroot_exec apt-get purge -y ubuntu-advantage-tools ubuntu-cloud-server ubuntu-drivers-common ubuntu-release-upgrader-core unattended-upgrades xz-utils
 
     chroot_exec apt-get autoremove -y
     chroot_exec apt-mark hold linux-image-virtual docker-ce docker-ce-cli containerd.io
