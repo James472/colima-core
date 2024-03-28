@@ -10,8 +10,8 @@ on:
 permissions: write-all
 
 env:
-  UBUNTU_CODENAME: bionic
-  UBUNTU_VERSION: "18.04"
+  UBUNTU_CODENAME: focal
+  UBUNTU_VERSION: "20.04"
   DOCKER_VERSION: "24.0.9"
   NERDCTL_VERSION: "1.7.3"
   FLANNEL_VERSION: "1.2.0"
@@ -28,7 +28,7 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
-          
+
       - name: Build for aarch64
         run: |
           make qcow OS_ARCH=aarch64 UBUNTU_CODENAME=${UBUNTU_CODENAME} UBUNTU_VERSION=${UBUNTU_VERSION} DOCKER_VERSION=${DOCKER_VERSION} BINFMT_VERSION=${BINFMT_VERSION} BINFMT_QEMU_VERSION=${BINFMT_QEMU_VERSION}
