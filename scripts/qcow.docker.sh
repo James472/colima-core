@@ -12,7 +12,8 @@ echo vars: $ARCH $BINFMT_ARCH $UBUNTU_VERSION $DOCKER_VERSION
 SCRIPT_DIR=$(realpath "$(dirname "$(dirname $0)")")
 
 # dependencies in case of cross-arch
-docker run --privileged --rm tonistiigi/binfmt --install $BINFMT_ARCH
+docker run --privileged --rm tonistiigi/binfmt --install aarch64
+docker run --privileged --rm tonistiigi/binfmt --install x86_64
 
 # build qcow image
 docker run --rm --privileged \
