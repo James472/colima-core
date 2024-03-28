@@ -29,6 +29,11 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
+      - name: Build for x86_64
+        run: |
+          make qcow OS_ARCH=x86_64 UBUNTU_CODENAME=${UBUNTU_CODENAME} UBUNTU_VERSION=${UBUNTU_VERSION} DOCKER_VERSION=${DOCKER_VERSION} BINFMT_VERSION=${BINFMT_VERSION} BINFMT_QEMU_VERSION=${BINFMT_QEMU_VERSION}
+          ls -lah dist/img
+
       - name: Build for aarch64
         run: |
           make qcow OS_ARCH=aarch64 UBUNTU_CODENAME=${UBUNTU_CODENAME} UBUNTU_VERSION=${UBUNTU_VERSION} DOCKER_VERSION=${DOCKER_VERSION} BINFMT_VERSION=${BINFMT_VERSION} BINFMT_QEMU_VERSION=${BINFMT_QEMU_VERSION}
@@ -43,7 +48,5 @@ jobs:
           tag="${GITHUB_REF##*/}"
 
           gh release create "${tag}" --draft --title "${tag}"
-          dist/img/ubuntu-${UBUNTU_VERSION}-minimal-cloudimg-amd64.qcow2
-          dist/img/ubuntu-${UBUNTU_VERSION}-minimal-cloudimg-amd64.qcow2.sha512sum
           dist/img/ubuntu-${UBUNTU_VERSION}-minimal-cloudimg-arm64.qcow2
           dist/img/ubuntu-${UBUNTU_VERSION}-minimal-cloudimg-arm64.qcow2.sha512sum
