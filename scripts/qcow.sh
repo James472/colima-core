@@ -8,7 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 # external variables that must be set
 echo vars: $ARCH $BINFMT_ARCH $UBUNTU_VERSION $DOCKER_VERSION
 
-FILENAME="ubuntu-${UBUNTU_VERSION}-server-cloudimg-${ARCH}"
+FILENAME="debian-${UBUNTU_VERSION}-genericcloud-${ARCH}-daily"
 
 SCRIPT_DIR=$(realpath "$(dirname "$(dirname $0)")")
 IMG_DIR="$SCRIPT_DIR/dist/img"
@@ -21,9 +21,9 @@ install_dependencies() (
     apt-get install -y file fdisk libdigest-sha-perl qemu-utils
 )
 
-convert_file() (
-    qemu-img convert -p -f qcow2 -O raw $FILE.img $FILE.raw
-)
+# convert_file() (
+#     qemu-img convert -p -f qcow2 -O raw $FILE.img $FILE.raw
+# )
 
 extract_partition_offset() (
     fdisk -l $FILE.raw | grep "$FILE.raw1 " | awk -F' ' '{print $2}'
@@ -108,7 +108,7 @@ compress_file() (
 
 # perform all actions
 install_dependencies
-convert_file
+# convert_file
 mount_partition "$(extract_partition_offset)"
 install_packages iptables socat sshfs
 unmount_partition

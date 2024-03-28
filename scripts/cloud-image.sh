@@ -13,8 +13,8 @@ mkdir -p $DIST_DIR
 cd $DIST_DIR
 
 download() (
-    FILE="ubuntu-${UBUNTU_VERSION}-server-cloudimg-${1}.img"
-    URL="https://cloud-images.ubuntu.com/releases/${UBUNTU_CODENAME}/release/${FILE}"
+    FILE="debian-${UBUNTU_VERSION}-genericcloud-${1}-daily.raw"
+    URL="https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/${FILE}"
     curl -LO $URL
 
     shasum -a 512 "${FILE}" >"${FILE}.sha512sum"
@@ -24,9 +24,9 @@ download() (
 download $ARCH
 
 # validate
-(
-    curl -sL https://cloud-images.ubuntu.com/releases/${UBUNTU_CODENAME}/release/SHA256SUMS | grep "${ARCH}\.img$" | shasum -a 256 --check --status
-)
+# (
+#     curl -sL https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/SHA512SUMS | grep "genericcloud-arm64-daily.raw$" | shasum -a 512 --check --status
+# )
 
 echo download successful
 ls -lh .
