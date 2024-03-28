@@ -23,4 +23,4 @@ docker run --rm --privileged \
     --env BINFMT_ARCH \
     --env UBUNTU_VERSION \
     --env DOCKER_VERSION \
-    debian:${UBUNTU_VERSION} /build/scripts/qcow.sh
+    ubuntu /build/scripts/qcow.sh
