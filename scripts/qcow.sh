@@ -62,7 +62,7 @@ install_packages() (
     # mark packages as dependencies so that autoremove does not uninstall them
     chroot_exec apt-get install -y cloud-init lsb-release python3-apt gnupg curl wget
 
-    chroot_exec apt-get purge -y apport console-setup-linux dbus-user-session dmsetup liblocale-gettext-perl lxd-agent-loader lxd-installer parted pciutils pollinate python3-gi snapd ssh-import-id
+    chroot_exec apt-get purge -y apport console-setup-linux dbus-user-session dmsetup liblocale-gettext-perl parted pciutils pollinate python3-gi snapd ssh-import-id
     chroot_exec apt-get purge -y ubuntu-advantage-tools ubuntu-cloud-server ubuntu-drivers-common ubuntu-release-upgrader-core unattended-upgrades xz-utils
 
     chroot_exec apt-get autoremove -y
