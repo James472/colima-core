@@ -53,6 +53,7 @@ install_packages() (
     echo 'nameserver 1.1.1.1' >$CHROOT_DIR/etc/resolv.conf
 
     # packages
+    chmod 666 $CHROOT_DIR/dev/null
     chroot_exec apt-get update
     chroot_exec apt-get install -y "$@"
     (
