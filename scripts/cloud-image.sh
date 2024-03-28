@@ -16,7 +16,7 @@ download() (
     FILE="debian-${UBUNTU_VERSION}-genericcloud-${1}-daily"
     URL="https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/${FILE}.qcow2"
     curl -LO $URL
-    mv disk.raw "${FILE}.img"
+    mv "${FILE}.qcow2" "${FILE}.img"
 
     shasum -a 512 "${FILE}.img" >"${FILE}.sha512sum"
 )
