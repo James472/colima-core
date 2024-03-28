@@ -10,8 +10,8 @@ on:
 permissions: write-all
 
 env:
-  UBUNTU_CODENAME: mantic
-  UBUNTU_VERSION: "23.10"
+  UBUNTU_CODENAME: bionic
+  UBUNTU_VERSION: "18.04"
   DOCKER_VERSION: "24.0.9"
   NERDCTL_VERSION: "1.7.3"
   FLANNEL_VERSION: "1.2.0"
