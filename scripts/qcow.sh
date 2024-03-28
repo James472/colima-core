@@ -45,6 +45,7 @@ chroot_exec() (
 install_packages() (
     # necessary
     chroot_exec mount -t proc proc /proc
+    chroot_exec mkdir /dev/pts
     chroot_exec mount -t devpts devpts /dev/pts
 
     # internet
