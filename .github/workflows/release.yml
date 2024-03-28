@@ -43,5 +43,5 @@ jobs:
           tag="${GITHUB_REF##*/}"
 
           gh release create "${tag}" --draft --title "${tag}"
-          dist/img/debian-${UBUNTU_VERSION}-genericcloud-arm64-daily.qcow2
-          dist/img/debian-${UBUNTU_VERSION}-genericcloud-arm64-daily.qcow2.sha512sum
+          dist/img/debian-${UBUNTU_VERSION}-nocloud-arm64-daily.qcow2
+          dist/img/debian-${UBUNTU_VERSION}-nocloud-arm64-daily.qcow2.sha512sum

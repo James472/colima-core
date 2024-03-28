@@ -8,7 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 # external variables that must be set
 echo vars: $ARCH $BINFMT_ARCH $UBUNTU_VERSION $DOCKER_VERSION
 
-FILENAME="debian-${UBUNTU_VERSION}-genericcloud-${ARCH}-daily"
+FILENAME="debian-${UBUNTU_VERSION}-nocloud-${ARCH}-daily"
 
 SCRIPT_DIR=$(realpath "$(dirname "$(dirname $0)")")
 IMG_DIR="$SCRIPT_DIR/dist/img"
@@ -44,6 +44,7 @@ chroot_exec() (
 
 install_packages() (
     # necessary
+    chroot_exec mount -l
     chroot_exec mount -t proc proc /proc
     chroot_exec mount -t devpts devpts /dev/pts
 

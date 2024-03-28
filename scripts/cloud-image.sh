@@ -13,7 +13,7 @@ mkdir -p $DIST_DIR
 cd $DIST_DIR
 
 download() (
-    FILE="debian-${UBUNTU_VERSION}-genericcloud-${1}-daily"
+    FILE="debian-${UBUNTU_VERSION}-nocloud-${1}-daily"
     URL="https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/${FILE}.qcow2"
     curl -LO $URL
     mv "${FILE}.qcow2" "${FILE}.img"
@@ -26,7 +26,7 @@ download $ARCH
 
 # validate
 # (
-#     curl -sL https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/SHA512SUMS | grep "genericcloud-arm64-daily.qcow2$" | shasum -a 512 --check --status
+#     curl -sL https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/SHA512SUMS | grep "nocloud-arm64-daily.qcow2$" | shasum -a 512 --check --status
 # )
 
 echo download successful
