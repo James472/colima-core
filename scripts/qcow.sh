@@ -44,7 +44,6 @@ chroot_exec() (
 
 install_packages() (
     # necessary
-    chroot_exec mount -l
     chroot_exec mount -t proc proc /proc
     chroot_exec mount -t devpts devpts /dev/pts
 
