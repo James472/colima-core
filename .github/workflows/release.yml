@@ -10,8 +10,8 @@ on:
 permissions: write-all
 
 env:
-  UBUNTU_CODENAME: focal
-  UBUNTU_VERSION: "20.04"
+  UBUNTU_CODENAME: sid
+  UBUNTU_VERSION: "sid"
   DOCKER_VERSION: "24.0.9"
   NERDCTL_VERSION: "1.7.3"
   FLANNEL_VERSION: "1.2.0"
