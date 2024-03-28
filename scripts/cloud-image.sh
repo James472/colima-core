@@ -13,9 +13,12 @@ mkdir -p $DIST_DIR
 cd $DIST_DIR
 
 download() (
-    FILE="debian-${UBUNTU_VERSION}-genericcloud-${1}-daily.raw"
-    URL="https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/${FILE}"
+    FILE="debian-${UBUNTU_VERSION}-genericcloud-${1}-daily"
+    URL="https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/${FILE}.tar.xz"
     curl -LO $URL
+    tar -xf "${FILE}.tar.xz"
+    mv disk.raw "${FILE}.raw"
+    rm "${FILE}.tar.xz"
 
     shasum -a 512 "${FILE}" >"${FILE}.sha512sum"
 )

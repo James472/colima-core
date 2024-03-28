@@ -45,7 +45,7 @@ chroot_exec() (
 install_packages() (
     # necessary
     chroot_exec mount -t proc proc /proc
-    # chroot_exec mount -t devpts devpts /dev/pts
+    chroot_exec mount -t devpts devpts /dev/pts
 
     # internet
     chroot_exec mv /etc/resolv.conf /etc/resolv.conf.bak
@@ -90,7 +90,7 @@ install_packages() (
     # clean traces
     chroot_exec rm /etc/resolv.conf
     chroot_exec mv /etc/resolv.conf.bak /etc/resolv.conf
-    # chroot_exec umount /dev/pts
+    chroot_exec umount /dev/pts
     chroot_exec umount /proc
 
     # fill partition with zeros, to recover space during compression
