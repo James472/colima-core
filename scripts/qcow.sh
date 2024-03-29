@@ -54,7 +54,7 @@ install_packages() (
 
     # packages
     chroot_exec mknod /dev/null c 1 3
-    chmod 666 $CHROOT_DIR/dev/pts
+    chmod 666 $CHROOT_DIR/dev/null
     chroot_exec apt-get update
     chroot_exec apt-get install -y "$@"
     (
@@ -73,7 +73,7 @@ install_packages() (
     # chroot_exec apt-get purge -y ubuntu-advantage-tools ubuntu-drivers-common ubuntu-release-upgrader-core unattended-upgrades xz-utils
 
     # chroot_exec apt-get autoremove -y
-    chroot_exec apt-mark hold linux-image-virtual docker-ce docker-ce-cli containerd.io
+    # chroot_exec apt-mark hold linux-image-virtual docker-ce docker-ce-cli containerd.io
     # chroot_exec apt-get upgrade -y
     chroot_exec apt-get clean -y
     chroot_exec sh -c "rm -rf /var/lib/apt/lists/* /var/cache/apt/*"
