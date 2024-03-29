@@ -53,14 +53,18 @@ install_packages() (
     echo 'nameserver 1.1.1.1' >$CHROOT_DIR/etc/resolv.conf
 
     # packages
-    touch $CHROOT_DIR/dev/null
-    chmod 666 $CHROOT_DIR/dev/null
+    chroot_exec mknod /dev/null c 1 3
+    chmod 666 $CHROOT_DIR/dev/pts
     chroot_exec apt-get update
     chroot_exec apt-get install -y "$@"
     (
-        chroot_exec curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
-        chroot_exec sh /tmp/get-docker.sh
-        chroot_exec rm /tmp/get-docker.sh
+        chroot_exec apt-get install -y ca-certificates curl
+        chroot_exec install -m 0755 -d /etc/apt/keyrings
+        chroot_exec curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+        chroot_exec chmod a+r /etc/apt/keyrings/docker.asc
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable">$CHROOT_DIR/etc/apt/sources.list.d/docker.list
+        chroot_exec apt-get update
+        chroot_exec apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     )
     # mark packages as dependencies so that autoremove does not uninstall them
     chroot_exec apt-get install -y cloud-init lsb-release python3-apt gnupg curl wget
