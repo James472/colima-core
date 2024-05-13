@@ -67,7 +67,7 @@ install_packages() (
         chroot_exec apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     )
     # mark packages as dependencies so that autoremove does not uninstall them
-    chroot_exec apt-get install -y lsb-release python3-apt gnupg curl wget
+    chroot_exec apt-get install -y cloud-init lsb-release python3-apt gnupg curl wget
 
     # chroot_exec apt-get purge -y apport console-setup-linux dbus-user-session dmsetup parted pciutils pollinate python3-gi snapd ssh-import-id
     # chroot_exec apt-get purge -y ubuntu-advantage-tools ubuntu-drivers-common ubuntu-release-upgrader-core unattended-upgrades xz-utils
