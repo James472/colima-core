@@ -18,7 +18,7 @@ FILE="$IMG_DIR/$FILENAME"
 
 install_dependencies() (
     apt-get update
-    apt-get install -y file fdisk libdigest-sha-perl qemu-utils truncate
+    apt-get install -y file fdisk libdigest-sha-perl qemu-utils
 )
 
 convert_file() (
