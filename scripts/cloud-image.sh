@@ -13,7 +13,7 @@ mkdir -p $DIST_DIR
 cd $DIST_DIR
 
 download() (
-    FILE="debian-${UBUNTU_VERSION}-nocloud-${1}-daily"
+    FILE="debian-${UBUNTU_VERSION}-genericcloud-${1}-daily"
     URL="https://cloud.debian.org/images/cloud/${UBUNTU_CODENAME}/daily/latest/${FILE}.qcow2"
     curl -LO $URL
     mv "${FILE}.qcow2" "${FILE}.img"

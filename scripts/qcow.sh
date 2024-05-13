@@ -8,7 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 # external variables that must be set
 echo vars: $ARCH $BINFMT_ARCH $UBUNTU_VERSION $DOCKER_VERSION
 
-FILENAME="debian-${UBUNTU_VERSION}-nocloud-${ARCH}-daily"
+FILENAME="debian-${UBUNTU_VERSION}-genericcloud-${ARCH}-daily"
 
 SCRIPT_DIR=$(realpath "$(dirname "$(dirname $0)")")
 IMG_DIR="$SCRIPT_DIR/dist/img"
@@ -68,8 +68,6 @@ install_packages() (
     )
     # mark packages as dependencies so that autoremove does not uninstall them
     chroot_exec apt-get install -y lsb-release python3-apt gnupg curl wget
-    chroot_exec apt-get autoremove -y
-    chroot_exec apt-get install -y cloud-init
 
     # chroot_exec apt-get purge -y apport console-setup-linux dbus-user-session dmsetup parted pciutils pollinate python3-gi snapd ssh-import-id
     # chroot_exec apt-get purge -y ubuntu-advantage-tools ubuntu-drivers-common ubuntu-release-upgrader-core unattended-upgrades xz-utils
