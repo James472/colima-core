@@ -1,11 +1,11 @@
 # core dependency
 UBUNTU_VERSION ?= 24.04
 UBUNTU_CODENAME ?= noble
-BINFMT_VERSION ?= deploy/v7.0.0-28
+BINFMT_VERSION ?= deploy/v8.1.5-43
 BINFMT_QEMU_VERSION ?= 7.0.0 
 
 # docker
-DOCKER_VERSION=24.0.9
+DOCKER_VERSION ?= 24.0.9
 
 # containerd dependency
 NERDCTL_VERSION ?= 1.7.3
